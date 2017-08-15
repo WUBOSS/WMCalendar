@@ -13,6 +13,15 @@
 		8D46B4411F3C0F4F00272D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D46B43F1F3C0F4F00272D73 /* Main.storyboard */; };
 		8D46B4431F3C0F4F00272D73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D46B4421F3C0F4F00272D73 /* Assets.xcassets */; };
 		8D46B4461F3C0F4F00272D73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D46B4441F3C0F4F00272D73 /* LaunchScreen.storyboard */; };
+		8D46B4501F3C25D100272D73 /* WMCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D46B44F1F3C25D100272D73 /* WMCalendar.m */; };
+		8D8EA10B1F42CA9D00D4A301 /* WMCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA10A1F42CA9D00D4A301 /* WMCalendarCell.m */; };
+		8D8EA1161F42CCBC00D4A301 /* WMCalendarConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1151F42CCBC00D4A301 /* WMCalendarConstants.m */; };
+		8D8EA1191F42D0A600D4A301 /* WMCalendarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1181F42D0A600D4A301 /* WMCalendarAppearance.m */; };
+		8D8EA11C1F42DB2000D4A301 /* WMCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA11B1F42DB2000D4A301 /* WMCalendarWeekdayView.m */; };
+		8D8EA11F1F42DB5900D4A301 /* WMCalendarHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA11E1F42DB5900D4A301 /* WMCalendarHeaderView.m */; };
+		8D8EA1231F42F5F100D4A301 /* WMCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1221F42F5F100D4A301 /* WMCalendarExtensions.m */; };
+		8D8EA1261F42FC6700D4A301 /* WMCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */; };
+		8D8EA1291F42FCA100D4A301 /* WMCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,25 @@
 		8D46B4421F3C0F4F00272D73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D46B4451F3C0F4F00272D73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D46B4471F3C0F4F00272D73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D46B44E1F3C25D100272D73 /* WMCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WMCalendar.h; path = WMCalendar/WMCalendar.h; sourceTree = SOURCE_ROOT; };
+		8D46B44F1F3C25D100272D73 /* WMCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WMCalendar.m; path = WMCalendar/WMCalendar.m; sourceTree = SOURCE_ROOT; };
+		8D8EA1091F42CA9D00D4A301 /* WMCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarCell.h; sourceTree = "<group>"; };
+		8D8EA10A1F42CA9D00D4A301 /* WMCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarCell.m; sourceTree = "<group>"; };
+		8D8EA1141F42CCBC00D4A301 /* WMCalendarConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarConstants.h; sourceTree = "<group>"; };
+		8D8EA1151F42CCBC00D4A301 /* WMCalendarConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarConstants.m; sourceTree = "<group>"; };
+		8D8EA1171F42D0A600D4A301 /* WMCalendarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarAppearance.h; sourceTree = "<group>"; };
+		8D8EA1181F42D0A600D4A301 /* WMCalendarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarAppearance.m; sourceTree = "<group>"; };
+		8D8EA11A1F42DB2000D4A301 /* WMCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarWeekdayView.h; sourceTree = "<group>"; };
+		8D8EA11B1F42DB2000D4A301 /* WMCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarWeekdayView.m; sourceTree = "<group>"; };
+		8D8EA11D1F42DB5900D4A301 /* WMCalendarHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarHeaderView.h; sourceTree = "<group>"; };
+		8D8EA11E1F42DB5900D4A301 /* WMCalendarHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarHeaderView.m; sourceTree = "<group>"; };
+		8D8EA1201F42E77200D4A301 /* WMCalendarDynamicHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WMCalendarDynamicHeader.h; sourceTree = "<group>"; };
+		8D8EA1211F42F5F100D4A301 /* WMCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarExtensions.h; sourceTree = "<group>"; };
+		8D8EA1221F42F5F100D4A301 /* WMCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarExtensions.m; sourceTree = "<group>"; };
+		8D8EA1241F42FC6700D4A301 /* WMCalendarDelegationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarDelegationProxy.h; sourceTree = "<group>"; };
+		8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarDelegationProxy.m; sourceTree = "<group>"; };
+		8D8EA1271F42FCA100D4A301 /* WMCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarDelegationFactory.h; sourceTree = "<group>"; };
+		8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarDelegationFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,7 @@
 		8D46B4351F3C0F4F00272D73 /* WMCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				8D46B44D1F3C23D000272D73 /* WMCalendar */,
 				8D46B4391F3C0F4F00272D73 /* AppDelegate.h */,
 				8D46B43A1F3C0F4F00272D73 /* AppDelegate.m */,
 				8D46B43C1F3C0F4F00272D73 /* ViewController.h */,
@@ -77,6 +106,32 @@
 				8D46B4371F3C0F4F00272D73 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D46B44D1F3C23D000272D73 /* WMCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				8D46B44E1F3C25D100272D73 /* WMCalendar.h */,
+				8D46B44F1F3C25D100272D73 /* WMCalendar.m */,
+				8D8EA1091F42CA9D00D4A301 /* WMCalendarCell.h */,
+				8D8EA10A1F42CA9D00D4A301 /* WMCalendarCell.m */,
+				8D8EA1141F42CCBC00D4A301 /* WMCalendarConstants.h */,
+				8D8EA1151F42CCBC00D4A301 /* WMCalendarConstants.m */,
+				8D8EA1171F42D0A600D4A301 /* WMCalendarAppearance.h */,
+				8D8EA1181F42D0A600D4A301 /* WMCalendarAppearance.m */,
+				8D8EA11A1F42DB2000D4A301 /* WMCalendarWeekdayView.h */,
+				8D8EA11B1F42DB2000D4A301 /* WMCalendarWeekdayView.m */,
+				8D8EA11D1F42DB5900D4A301 /* WMCalendarHeaderView.h */,
+				8D8EA11E1F42DB5900D4A301 /* WMCalendarHeaderView.m */,
+				8D8EA1201F42E77200D4A301 /* WMCalendarDynamicHeader.h */,
+				8D8EA1211F42F5F100D4A301 /* WMCalendarExtensions.h */,
+				8D8EA1221F42F5F100D4A301 /* WMCalendarExtensions.m */,
+				8D8EA1241F42FC6700D4A301 /* WMCalendarDelegationProxy.h */,
+				8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */,
+				8D8EA1271F42FCA100D4A301 /* WMCalendarDelegationFactory.h */,
+				8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */,
+			);
+			path = WMCalendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,7 +165,7 @@
 				TargetAttributes = {
 					8D46B4321F3C0F4F00272D73 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = CAARUXYBT4;
+						DevelopmentTeam = JY8J5UH6QC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -151,9 +206,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D8EA1161F42CCBC00D4A301 /* WMCalendarConstants.m in Sources */,
+				8D8EA1191F42D0A600D4A301 /* WMCalendarAppearance.m in Sources */,
 				8D46B43E1F3C0F4F00272D73 /* ViewController.m in Sources */,
+				8D8EA10B1F42CA9D00D4A301 /* WMCalendarCell.m in Sources */,
+				8D46B4501F3C25D100272D73 /* WMCalendar.m in Sources */,
+				8D8EA11C1F42DB2000D4A301 /* WMCalendarWeekdayView.m in Sources */,
+				8D8EA1291F42FCA100D4A301 /* WMCalendarDelegationFactory.m in Sources */,
 				8D46B43B1F3C0F4F00272D73 /* AppDelegate.m in Sources */,
+				8D8EA1231F42F5F100D4A301 /* WMCalendarExtensions.m in Sources */,
 				8D46B4381F3C0F4F00272D73 /* main.m in Sources */,
+				8D8EA1261F42FC6700D4A301 /* WMCalendarDelegationProxy.m in Sources */,
+				8D8EA11F1F42DB5900D4A301 /* WMCalendarHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,10 +339,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CAARUXYBT4;
+				DEVELOPMENT_TEAM = JY8J5UH6QC;
 				INFOPLIST_FILE = WMCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WM.WMCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zskj.WMCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -287,10 +352,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CAARUXYBT4;
+				DEVELOPMENT_TEAM = JY8J5UH6QC;
 				INFOPLIST_FILE = WMCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = WM.WMCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zskj.WMCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -314,6 +380,7 @@
 				8D46B44C1F3C0F4F00272D73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
