@@ -23,3 +23,7 @@ CGFloat const WMCalendarStandardWeekdayTextSize = 14;
 CGFloat const WMCalendarStandardHeaderTextSize = 16.5;
 CGFloat const WMCalendarMaximumEventDotDiameter = 4.8;
 CGFloat const WMCalendarStandardScopeHandleHeight = 26;
+
+
+NSString * const WMCalendarDefaultCellReuseIdentifier = @"_WMCalendarDefaultCellReuseIdentifier";
+NSString * const WMCalendarBlankCellReuseIdentifier = @"_WMCalendarBlankCellReuseIdentifier";

@@ -11,3 +11,8 @@
 @interface WMCalendarCell : UICollectionViewCell
 
 @end
+@interface WMCalendarBlankCell : UICollectionViewCell
+
+- (void)configureAppearance;
+
+@end

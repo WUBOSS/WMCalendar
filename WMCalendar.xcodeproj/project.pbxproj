@@ -22,6 +22,12 @@
 		8D8EA1231F42F5F100D4A301 /* WMCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1221F42F5F100D4A301 /* WMCalendarExtensions.m */; };
 		8D8EA1261F42FC6700D4A301 /* WMCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */; };
 		8D8EA1291F42FCA100D4A301 /* WMCalendarDelegationFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */; };
+		8DD179911F43D93600A35305 /* WMCalendarCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD179901F43D93600A35305 /* WMCalendarCollectionViewLayout.m */; };
+		8DD179941F43DC5E00A35305 /* WMCalendarCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD179931F43DC5E00A35305 /* WMCalendarCollectionView.m */; };
+		8DD1799E1F43E25400A35305 /* WMCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD1799D1F43E25400A35305 /* WMCalendarStickyHeader.m */; };
+		8DD179A11F43E5CE00A35305 /* WMCalendarCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD179A01F43E5CE00A35305 /* WMCalendarCalculator.m */; };
+		8DD179A41F43E5EA00A35305 /* WMCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD179A31F43E5EA00A35305 /* WMCalendarTransitionCoordinator.m */; };
+		8DD179A71F43EAB000A35305 /* WMCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD179A61F43EAB000A35305 /* WMCalendarScopeHandle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +60,18 @@
 		8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarDelegationProxy.m; sourceTree = "<group>"; };
 		8D8EA1271F42FCA100D4A301 /* WMCalendarDelegationFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarDelegationFactory.h; sourceTree = "<group>"; };
 		8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarDelegationFactory.m; sourceTree = "<group>"; };
+		8DD1798F1F43D93600A35305 /* WMCalendarCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarCollectionViewLayout.h; sourceTree = "<group>"; };
+		8DD179901F43D93600A35305 /* WMCalendarCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarCollectionViewLayout.m; sourceTree = "<group>"; };
+		8DD179921F43DC5E00A35305 /* WMCalendarCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarCollectionView.h; sourceTree = "<group>"; };
+		8DD179931F43DC5E00A35305 /* WMCalendarCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarCollectionView.m; sourceTree = "<group>"; };
+		8DD1799C1F43E25400A35305 /* WMCalendarStickyHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarStickyHeader.h; sourceTree = "<group>"; };
+		8DD1799D1F43E25400A35305 /* WMCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarStickyHeader.m; sourceTree = "<group>"; };
+		8DD1799F1F43E5CE00A35305 /* WMCalendarCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarCalculator.h; sourceTree = "<group>"; };
+		8DD179A01F43E5CE00A35305 /* WMCalendarCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarCalculator.m; sourceTree = "<group>"; };
+		8DD179A21F43E5EA00A35305 /* WMCalendarTransitionCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarTransitionCoordinator.h; sourceTree = "<group>"; };
+		8DD179A31F43E5EA00A35305 /* WMCalendarTransitionCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarTransitionCoordinator.m; sourceTree = "<group>"; };
+		8DD179A51F43EAB000A35305 /* WMCalendarScopeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMCalendarScopeHandle.h; sourceTree = "<group>"; };
+		8DD179A61F43EAB000A35305 /* WMCalendarScopeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMCalendarScopeHandle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +131,16 @@
 			children = (
 				8D46B44E1F3C25D100272D73 /* WMCalendar.h */,
 				8D46B44F1F3C25D100272D73 /* WMCalendar.m */,
-				8D8EA1091F42CA9D00D4A301 /* WMCalendarCell.h */,
-				8D8EA10A1F42CA9D00D4A301 /* WMCalendarCell.m */,
-				8D8EA1141F42CCBC00D4A301 /* WMCalendarConstants.h */,
-				8D8EA1151F42CCBC00D4A301 /* WMCalendarConstants.m */,
 				8D8EA1171F42D0A600D4A301 /* WMCalendarAppearance.h */,
 				8D8EA1181F42D0A600D4A301 /* WMCalendarAppearance.m */,
+				8DD1799F1F43E5CE00A35305 /* WMCalendarCalculator.h */,
+				8DD179A01F43E5CE00A35305 /* WMCalendarCalculator.m */,
+				8D8EA1091F42CA9D00D4A301 /* WMCalendarCell.h */,
+				8D8EA10A1F42CA9D00D4A301 /* WMCalendarCell.m */,
+				8DD179A51F43EAB000A35305 /* WMCalendarScopeHandle.h */,
+				8DD179A61F43EAB000A35305 /* WMCalendarScopeHandle.m */,
+				8D8EA1141F42CCBC00D4A301 /* WMCalendarConstants.h */,
+				8D8EA1151F42CCBC00D4A301 /* WMCalendarConstants.m */,
 				8D8EA11A1F42DB2000D4A301 /* WMCalendarWeekdayView.h */,
 				8D8EA11B1F42DB2000D4A301 /* WMCalendarWeekdayView.m */,
 				8D8EA11D1F42DB5900D4A301 /* WMCalendarHeaderView.h */,
@@ -130,6 +152,14 @@
 				8D8EA1251F42FC6700D4A301 /* WMCalendarDelegationProxy.m */,
 				8D8EA1271F42FCA100D4A301 /* WMCalendarDelegationFactory.h */,
 				8D8EA1281F42FCA100D4A301 /* WMCalendarDelegationFactory.m */,
+				8DD1798F1F43D93600A35305 /* WMCalendarCollectionViewLayout.h */,
+				8DD179901F43D93600A35305 /* WMCalendarCollectionViewLayout.m */,
+				8DD179921F43DC5E00A35305 /* WMCalendarCollectionView.h */,
+				8DD179931F43DC5E00A35305 /* WMCalendarCollectionView.m */,
+				8DD1799C1F43E25400A35305 /* WMCalendarStickyHeader.h */,
+				8DD1799D1F43E25400A35305 /* WMCalendarStickyHeader.m */,
+				8DD179A21F43E5EA00A35305 /* WMCalendarTransitionCoordinator.h */,
+				8DD179A31F43E5EA00A35305 /* WMCalendarTransitionCoordinator.m */,
 			);
 			path = WMCalendar;
 			sourceTree = "<group>";
@@ -206,18 +236,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DD179941F43DC5E00A35305 /* WMCalendarCollectionView.m in Sources */,
 				8D8EA1161F42CCBC00D4A301 /* WMCalendarConstants.m in Sources */,
 				8D8EA1191F42D0A600D4A301 /* WMCalendarAppearance.m in Sources */,
 				8D46B43E1F3C0F4F00272D73 /* ViewController.m in Sources */,
 				8D8EA10B1F42CA9D00D4A301 /* WMCalendarCell.m in Sources */,
+				8DD179911F43D93600A35305 /* WMCalendarCollectionViewLayout.m in Sources */,
 				8D46B4501F3C25D100272D73 /* WMCalendar.m in Sources */,
 				8D8EA11C1F42DB2000D4A301 /* WMCalendarWeekdayView.m in Sources */,
+				8DD179A71F43EAB000A35305 /* WMCalendarScopeHandle.m in Sources */,
 				8D8EA1291F42FCA100D4A301 /* WMCalendarDelegationFactory.m in Sources */,
+				8DD179A11F43E5CE00A35305 /* WMCalendarCalculator.m in Sources */,
 				8D46B43B1F3C0F4F00272D73 /* AppDelegate.m in Sources */,
 				8D8EA1231F42F5F100D4A301 /* WMCalendarExtensions.m in Sources */,
 				8D46B4381F3C0F4F00272D73 /* main.m in Sources */,
 				8D8EA1261F42FC6700D4A301 /* WMCalendarDelegationProxy.m in Sources */,
+				8DD1799E1F43E25400A35305 /* WMCalendarStickyHeader.m in Sources */,
 				8D8EA11F1F42DB5900D4A301 /* WMCalendarHeaderView.m in Sources */,
+				8DD179A41F43E5EA00A35305 /* WMCalendarTransitionCoordinator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

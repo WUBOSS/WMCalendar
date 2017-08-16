@@ -8,6 +8,48 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "WMCalendar.h"
+#import "WMCalendarCell.h"
+#import "WMCalendarHeaderView.h"
+#import "WMCalendarStickyHeader.h"
+#import "WMCalendarCollectionView.h"
+#import "WMCalendarCollectionViewLayout.h"
+#import "WMCalendarScopeHandle.h"
+#import "WMCalendarCalculator.h"
+#import "WMCalendarTransitionCoordinator.h"
+#import "WMCalendarDelegationProxy.h"
+@interface WMCalendar (Dynamic)
+
+@property (readonly, nonatomic) WMCalendarCollectionView *collectionView;
+@property (readonly, nonatomic) WMCalendarScopeHandle *scopeHandle;
+@property (readonly, nonatomic) WMCalendarCollectionViewLayout *collectionViewLayout;
+@property (readonly, nonatomic) WMCalendarTransitionCoordinator *transitionCoordinator;
+@property (readonly, nonatomic) WMCalendarCalculator *calculator;
+@property (readonly, nonatomic) BOOL floatingMode;
+@property (readonly, nonatomic) NSArray *visibleStickyHeaders;
+@property (readonly, nonatomic) CGFloat preferredHeaderHeight;
+@property (readonly, nonatomic) CGFloat preferredWeekdayHeight;
+@property (readonly, nonatomic) UIView *bottomBorder;
+
+@property (readonly, nonatomic) NSCalendar *gregorian;
+@property (readonly, nonatomic) NSDateComponents *components;
+@property (readonly, nonatomic) NSDateFormatter *formatter;
+
+@property (readonly, nonatomic) UIView *contentView;
+@property (readonly, nonatomic) UIView *daysContainer;
+
+@property (assign, nonatomic) BOOL needsAdjustingViewFrame;
+
+- (void)invalidateHeaders;
+- (void)adjustMonthPosition;
+- (void)configureAppearance;
+
+- (BOOL)isPageInRange:(NSDate *)page;
+- (BOOL)isDateInRange:(NSDate *)date;
+
+- (CGSize)sizeThatFits:(CGSize)size scope:(WMCalendarScope)scope;
+
+@end
+
 @interface WMCalendarAppearance (Dynamic)
 
 @property (readwrite, nonatomic) WMCalendar *calendar;

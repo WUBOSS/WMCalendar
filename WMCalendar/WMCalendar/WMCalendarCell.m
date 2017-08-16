@@ -11,3 +11,6 @@
 @implementation WMCalendarCell
 
 @end
+@implementation WMCalendarBlankCell
+
+@end

@@ -10,7 +10,14 @@
 #import "WMCalendarDynamicHeader.h"
 #import "WMCalendarExtensions.h"
 #import "WMCalendarDelegationFactory.h"
-
+#import "WMCalendarCollectionViewLayout.h"
+#import "WMCalendarCollectionView.h"
+#import "WMCalendarCell.h"
+#import "WMCalendarConstants.h"
+#import "WMCalendarStickyHeader.h"
+#import "WMCalendarCalculator.h"
+#import "WMCalendarTransitionCoordinator.h"
+#import "WMCalendarScopeHandle.h"
 typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
     WMCalendarOrientationLandscape,
     WMCalendarOrientationPortrait
@@ -26,6 +33,19 @@ typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
 @property (strong, nonatomic) NSTimeZone *timeZone;
 
 
+@property (weak  , nonatomic) UIView                     *contentView;
+@property (weak  , nonatomic) UIView                     *daysContainer;
+@property (weak  , nonatomic) UIView                     *topBorder;
+@property (weak  , nonatomic) UIView                     *bottomBorder;
+
+@property (weak  , nonatomic) WMCalendarCollectionView   *collectionView;
+@property (weak  , nonatomic) WMCalendarCollectionViewLayout *collectionViewLayout;
+@property (weak  , nonatomic) WMCalendarScopeHandle      *scopeHandle;
+
+@property (strong, nonatomic) WMCalendarTransitionCoordinator *transitionCoordinator;
+@property (strong, nonatomic) WMCalendarCalculator       *calculator;
+@property (weak  , nonatomic) WMCalendarHeaderTouchDeliver *deliver;
+
 @property (assign, nonatomic) BOOL                       needsAdjustingViewFrame;
 
 @property (assign, nonatomic) BOOL                       needsRequestingBoundingDates;
@@ -35,12 +55,17 @@ typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
 @property (assign, nonatomic) CGFloat                    preferredWeekdayHeight;
 @property (assign, nonatomic) CGFloat                    preferredRowHeight;
 
+@property (readonly, nonatomic) BOOL floatingMode;
+
 @property (readonly, nonatomic) WMCalendarOrientation currentCalendarOrientation;
 @property (strong, nonatomic) WMCalendarDelegationProxy  *dataSourceProxy;
 @property (strong, nonatomic) WMCalendarDelegationProxy  *delegateProxy;
 
 
 @property (strong, nonatomic) NSMapTable *visibleSectionHeaders;
+
+
+- (void)configureAppearan;
 @end
 @implementation WMCalendar
 - (instancetype)initWithFrame:(CGRect)frame
@@ -81,7 +106,7 @@ typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
     _headerHeight     = WMCalendarAutomaticDimension;
     _weekdayHeight    = WMCalendarAutomaticDimension;
 
-    _rowHeight      = WMCalendarStandardRowHeight*MAX(1, FSCalendarDeviceIsIPad*1.5);
+    _rowHeight      = WMCalendarStandardRowHeight*MAX(1,WMCalendarDeviceIsIPad*1.5);
     
     _preferredHeaderHeight  = WMCalendarAutomaticDimension;
     _preferredWeekdayHeight = WMCalendarAutomaticDimension;
@@ -100,9 +125,144 @@ typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
     _dataSourceProxy = [WMCalendarDelegationFactory dataSourceProxy];
     _delegateProxy = [WMCalendarDelegationFactory delegateProxy];
 
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+    contentView.backgroundColor = [UIColor clearColor];
+    [self addSubview:contentView];
+    self.contentView = contentView;
     
     
+    UIView *daysContainer = [[UIView alloc] initWithFrame:CGRectZero];
+    daysContainer.backgroundColor = [UIColor clearColor];
+    daysContainer.clipsToBounds = YES;
+    [contentView addSubview:daysContainer];
+    self.daysContainer = daysContainer;
+    
+    WMCalendarCollectionViewLayout *collectionViewLayout = [[WMCalendarCollectionViewLayout alloc] init];
+    collectionViewLayout.calendar = self;
+    
+    
+   WMCalendarCollectionView *collectionView = [[WMCalendarCollectionView alloc] initWithFrame:CGRectZero
+                                                                          collectionViewLayout:collectionViewLayout];
+    collectionView.dataSource = self;
+    collectionView.delegate = self;
+    collectionView.backgroundColor = [UIColor clearColor];
+    collectionView.pagingEnabled = YES;
+    collectionView.showsHorizontalScrollIndicator = NO;
+    collectionView.showsVerticalScrollIndicator = NO;
+    collectionView.allowsMultipleSelection = NO;
+    collectionView.clipsToBounds = YES;
+    [collectionView registerClass:[WMCalendarCell class] forCellWithReuseIdentifier:WMCalendarDefaultCellReuseIdentifier];
+    [collectionView registerClass:[WMCalendarBlankCell class] forCellWithReuseIdentifier:WMCalendarBlankCellReuseIdentifier];
+    [collectionView registerClass:[WMCalendarStickyHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"placeholderHeader"];
+    [daysContainer addSubview:collectionView];
+    self.collectionView = collectionView;
+    self.collectionViewLayout = collectionViewLayout;
+    
+    
+    if (!WMCalendarInAppExtension) {
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.backgroundColor = WMCalendarStandardLineColor;
+        view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin; // Stick to top
+        [self addSubview:view];
+        self.topBorder = view;
+        
+        view = [[UIView alloc] initWithFrame:CGRectZero];
+        view.backgroundColor = WMCalendarStandardLineColor;
+        view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin; // Stick to bottom
+        [self addSubview:view];
+        self.bottomBorder = view;
+        
+    }
+     [self invalidateLayout];
+    
+    
+    self.transitionCoordinator = [[WMCalendarTransitionCoordinator alloc] initWithCalendar:self];
+    self.calculator = [[WMCalendarCalculator alloc] initWithCalendar:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
+- (void)invalidateLayout
+{
+    if (!self.floatingMode) {
+        
+        if (!_calendarHeaderView) {
+            
+           WMCalendarHeaderView *headerView = [[WMCalendarHeaderView alloc] initWithFrame:CGRectZero];
+            headerView.calendar = self;
+            headerView.scrollEnabled = _scrollEnabled;
+            [_contentView addSubview:headerView];
+            self.calendarHeaderView = headerView;
+            
+        }
+        
+        if (!_calendarWeekdayView) {
+           WMCalendarWeekdayView *calendarWeekdayView = [[WMCalendarWeekdayView alloc] initWithFrame:CGRectZero];
+            calendarWeekdayView.calendar = self;
+            [_contentView addSubview:calendarWeekdayView];
+            _calendarWeekdayView = calendarWeekdayView;
+        }
+        
+        if (_scrollEnabled) {
+            if (!_deliver) {
+               WMCalendarHeaderTouchDeliver *deliver = [[WMCalendarHeaderTouchDeliver alloc] initWithFrame:CGRectZero];
+                deliver.header = _calendarHeaderView;
+                deliver.calendar = self;
+                [_contentView addSubview:deliver];
+                self.deliver = deliver;
+            }
+        } else if (_deliver) {
+            [_deliver removeFromSuperview];
+        }
+        
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        if (self.showsScopeHandle) {
+            if (!_scopeHandle) {
+               WMCalendarScopeHandle *handle = [[WMCalendarScopeHandle alloc] initWithFrame:CGRectZero];
+                handle.calendar = self;
+                [self addSubview:handle];
+                self.scopeHandle = handle;
+                _needsAdjustingViewFrame = YES;
+                [self setNeedsLayout];
+            }
+        } else {
+            if (_scopeHandle) {
+                [self.scopeHandle removeFromSuperview];
+                _needsAdjustingViewFrame = YES;
+                [self setNeedsLayout];
+            }
+        }
+#pragma GCC diagnostic pop
+        
+        _collectionView.pagingEnabled = YES;
+        _collectionViewLayout.scrollDirection = (UICollectionViewScrollDirection)self.scrollDirection;
+        
+    } else {
+        
+        [self.calendarHeaderView removeFromSuperview];
+        [self.deliver removeFromSuperview];
+        [self.calendarWeekdayView removeFromSuperview];
+        [self.scopeHandle removeFromSuperview];
+        
+        _collectionView.pagingEnabled = NO;
+        _collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        
+    }
+    
+    _preferredHeaderHeight =WMCalendarAutomaticDimension;
+    _preferredWeekdayHeight =WMCalendarAutomaticDimension;
+    _preferredRowHeight =WMCalendarAutomaticDimension;
+    _needsAdjustingViewFrame = YES;
+    [self setNeedsLayout];
+}
+
+- (void)orientationDidChange:(NSNotification *)notification
+{
+    self.orientation = self.currentCalendarOrientation;
+}
+
 - (void)invalidateDateTools
 {
     _gregorian.locale = _locale;
@@ -121,6 +281,31 @@ typedef NS_ENUM(NSUInteger, WMCalendarOrientation) {
     CGSize sizeInPoints = [UIScreen mainScreen].bounds.size;
     WMCalendarOrientation orientation = scale * sizeInPoints.width == nativeSize.width ? WMCalendarOrientationPortrait : WMCalendarOrientationLandscape;
     return orientation;
+}
+
+- (void)setOrientation:(WMCalendarOrientation)orientation
+{
+    if (_orientation != orientation) {
+        _orientation = orientation;
+        
+        _needsAdjustingViewFrame = YES;
+        _preferredWeekdayHeight = WMCalendarAutomaticDimension;
+        _preferredRowHeight = WMCalendarAutomaticDimension;
+        _preferredHeaderHeight = WMCalendarAutomaticDimension;
+        _calendarHeaderView.needsAdjustingMonthPosition = YES;
+        _calendarHeaderView.needsAdjustingViewFrame = YES;
+        [self setNeedsLayout];
+    }
+}
+
+- (BOOL)floatingMode
+{
+    return _scope == WMCalendarScopeMonth && _scrollEnabled && !_pagingEnabled;
+}
+
+- (void)configureAppearance
+{
+    
 }
 
 @end
