@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-@class WMCalendar;
-@interface WMCalendarTransitionCoordinator : NSObject
+#import "WMCalendar.h"
+@interface WMCalendarTransitionCoordinator : NSObject<UIGestureRecognizerDelegate>
 - (instancetype)initWithCalendar:(WMCalendar *)calendar;
-
+@property (readonly, nonatomic) WMCalendarScope representingScope;
+- (void)handleScopeGesture:(id)sender;
 @end

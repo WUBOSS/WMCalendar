@@ -11,5 +11,5 @@
 @interface WMCalendarScopeHandle : UIView
 @property (weak, nonatomic) UIPanGestureRecognizer *panGesture;
 @property (weak, nonatomic) WMCalendar *calendar;
-
+- (void)handlePan:(id)sender;
 @end

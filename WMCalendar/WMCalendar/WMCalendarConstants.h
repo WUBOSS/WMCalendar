@@ -44,6 +44,8 @@ UIKIT_EXTERN NSString * const WMCalendarBlankCellReuseIdentifier;
 #define WMCalendarInAppExtension [[[NSBundle mainBundle] bundlePath] hasSuffix:@".appex"]
 
 #define WMCalendarStandardLineColor        [[UIColor lightGrayColor] colorWithAlphaComponent:0.30]
+
+#define WMCalendarStandardScopeHandleColor [[UIColor lightGrayColor] colorWithAlphaComponent:0.50]
 WMCalendarDeprecated('borderRadius')
 typedef NS_ENUM(NSUInteger, WMCalendarCellShape) {
     WMCalendarCellShapeCircle    = 0,
@@ -53,5 +55,9 @@ typedef NS_ENUM(NSUInteger, WMCalendarUnit) {
     WMCalendarUnitMonth = NSCalendarUnitMonth,
     WMCalendarUnitWeekOfYear = NSCalendarUnitWeekOfYear,
     WMCalendarUnitDay = NSCalendarUnitDay
+};
+CGPoint const CGPointInfinity = {
+    .x =  CGFLOAT_MAX,
+    .y =  CGFLOAT_MAX
 };
 

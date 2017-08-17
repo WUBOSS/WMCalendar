@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
+
+@interface UIView (FSCalendarExtensions)
+
+@property (nonatomic) CGFloat fs_width;
+@property (nonatomic) CGFloat fs_height;
+
+@property (nonatomic) CGFloat fs_top;
+@property (nonatomic) CGFloat fs_left;
+@property (nonatomic) CGFloat fs_bottom;
+@property (nonatomic) CGFloat fs_right;
+
+@end
 @interface NSCalendar (FSCalendarExtensions)
 
 - (nullable NSDate *)fs_firstDayOfMonth:(NSDate *)month;
@@ -18,5 +31,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)fs_numberOfDaysInMonth:(NSDate *)month;
 
 @end
-
 NS_ASSUME_NONNULL_END
