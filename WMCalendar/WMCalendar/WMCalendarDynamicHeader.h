@@ -7,6 +7,10 @@
 //
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
+#import "WMCalendar.h"
+#import <Foundation/Foundation.h>
+
 #import "WMCalendar.h"
 #import "WMCalendarCell.h"
 #import "WMCalendarHeaderView.h"
@@ -17,6 +21,7 @@
 #import "WMCalendarCalculator.h"
 #import "WMCalendarTransitionCoordinator.h"
 #import "WMCalendarDelegationProxy.h"
+
 @interface WMCalendar (Dynamic)
 
 @property (readonly, nonatomic) WMCalendarCollectionView *collectionView;
@@ -60,3 +65,20 @@
 @property (readonly, nonatomic) NSDictionary *borderColors;
 
 @end
+
+@interface WMCalendarWeekdayView (Dynamic)
+
+@property (readwrite, nonatomic) WMCalendar *calendar;
+
+@end
+
+@interface WMCalendarCollectionViewLayout (Dynamic)
+
+@property (readonly, nonatomic) CGSize estimatedItemSize;
+
+@end
+
+@interface WMCalendarDelegationProxy()<WMCalendarDataSource,WMCalendarDelegate,WMCalendarDelegateAppearance>
+@end
+
+

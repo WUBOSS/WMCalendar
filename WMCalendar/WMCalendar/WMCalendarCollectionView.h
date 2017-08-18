@@ -11,3 +11,8 @@
 @interface WMCalendarCollectionView : UICollectionView
 
 @end
+
+
+@interface WMCalendarSeparator : UICollectionReusableView
+
+@end

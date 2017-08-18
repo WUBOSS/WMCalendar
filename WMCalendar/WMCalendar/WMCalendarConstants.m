@@ -24,6 +24,18 @@ CGFloat const WMCalendarStandardHeaderTextSize = 16.5;
 CGFloat const WMCalendarMaximumEventDotDiameter = 4.8;
 CGFloat const WMCalendarStandardScopeHandleHeight = 26;
 
+NSInteger const WMCalendarDefaultHourComponent = 0;
 
 NSString * const WMCalendarDefaultCellReuseIdentifier = @"_WMCalendarDefaultCellReuseIdentifier";
 NSString * const WMCalendarBlankCellReuseIdentifier = @"_WMCalendarBlankCellReuseIdentifier";
+NSString * const WMCalendarInvalidArgumentsExceptionName = @"Invalid argument exception";
+
+CGPoint const CGPointInfinity = {
+    .x =  CGFLOAT_MAX,
+    .y =  CGFLOAT_MAX
+};
+
+CGSize const CGSizeAutomatic = {
+    .width =  WMCalendarAutomaticDimension,
+    .height =  WMCalendarAutomaticDimension
+};

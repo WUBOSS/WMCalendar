@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WMCalendar;
+#import <Foundation/Foundation.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@class FSCalendar;
+
 @interface WMCalendarWeekdayView : UIView
-@property (weak  , nonatomic) WMCalendar *calendar;
+
+/**
+ An array of UILabel objects displaying the weekday symbols.
+ */
+@property (readonly, nonatomic) NSArray<UILabel *> *weekdayLabels;
+
+- (void)configureAppearance;
+
 @end
+
+NS_ASSUME_NONNULL_END

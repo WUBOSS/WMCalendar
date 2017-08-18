@@ -373,8 +373,96 @@ OFFSET_PROPERTY(preferredEventOffset, PreferredEventOffset, _appearance.eventOff
 }
 
 @end
+@interface WMCalendarEventIndicator ()
+
+@property (weak, nonatomic) UIView *contentView;
+
+@property (strong, nonatomic) NSPointerArray *eventLayers;
+
+@end
+
+@implementation WMCalendarEventIndicator
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
+        [self addSubview:view];
+        self.contentView = view;
+        
+        self.eventLayers = [NSPointerArray weakObjectsPointerArray];
+        for (int i = 0; i < 3; i++) {
+            CALayer *layer = [CALayer layer];
+            layer.backgroundColor = [UIColor clearColor].CGColor;
+            [self.contentView.layer addSublayer:layer];
+            [self.eventLayers addPointer:(__bridge void * _Nullable)(layer)];
+        }
+        
+    }
+    return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGFloat diameter = MIN(MIN(self.fs_width, self.fs_height),WMCalendarMaximumEventDotDiameter);
+    self.contentView.fs_height = self.fs_height;
+    self.contentView.fs_width = (self.numberOfEvents*2-1)*diameter;
+    self.contentView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+}
+
+- (void)layoutSublayersOfLayer:(CALayer *)layer
+{
+    [super layoutSublayersOfLayer:layer];
+    if (layer == self.layer) {
+        
+        CGFloat diameter = MIN(MIN(self.fs_width, self.fs_height),WMCalendarMaximumEventDotDiameter);
+        for (int i = 0; i < self.eventLayers.count; i++) {
+            CALayer *eventLayer = [self.eventLayers pointerAtIndex:i];
+            eventLayer.hidden = i >= self.numberOfEvents;
+            if (!eventLayer.hidden) {
+                eventLayer.frame = CGRectMake(2*i*diameter, (self.fs_height-diameter)*0.5, diameter, diameter);
+                if (eventLayer.cornerRadius != diameter/2) {
+                    eventLayer.cornerRadius = diameter/2;
+                }
+            }
+        }
+    }
+}
+
+- (void)setColor:(id)color
+{
+    if (![_color isEqual:color]) {
+        _color = color;
+        
+        if ([_color isKindOfClass:[UIColor class]]) {
+            for (NSInteger i = 0; i < self.eventLayers.count; i++) {
+                CALayer *layer = [self.eventLayers pointerAtIndex:i];
+                layer.backgroundColor = [_color CGColor];
+            }
+        } else if ([_color isKindOfClass:[NSArray class]]) {
+            NSArray<UIColor *> *colors = (NSArray *)_color;
+            for (int i = 0; i < self.eventLayers.count; i++) {
+                CALayer *eventLayer = [self.eventLayers pointerAtIndex:i];
+                eventLayer.backgroundColor = colors[MIN(i,colors.count-1)].CGColor;
+            }
+        }
+        
+    }
+}
+
+- (void)setNumberOfEvents:(NSInteger)numberOfEvents
+{
+    if (_numberOfEvents != numberOfEvents) {
+        _numberOfEvents = MIN(MAX(numberOfEvents,0),3);
+        [self setNeedsLayout];
+    }
+}
 
 
+@end
 @implementation WMCalendarBlankCell
 
 - (void)configureAppearance {}
